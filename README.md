@@ -29,7 +29,31 @@
  
  Note : All unsharded collections will go to primary shard only
  
- Step 5 : Now we will showcase how MongoDB can distribute the data automatically by sharding collections
+ Step 5 : Lets discuss types of sharding in MongoDB
+  - Hashed Sharding
+  - Range Hsarding
+  - Zone Sharding
  
+ Step 6 : Choosing Shard Key
+ 
+ Step 7 : Now we will showcase how MongoDB can distribute the data automatically by sharding collections
+ 
+ ** Hash shardng **
  - Create sharded database 
+ - shard collection with shard key(Hashed)
+ - insert sample data
+ - Verify Data Distribution 
  
+ Discuss Challenges with Hash Shard Key
+ 
+ ** Range SHarding **
+  - Create sharded database 
+  - shard collection with shard key(Hashed)
+  - insert sample data
+  - Verify Data Distribution 
+ 
+ Step 8 : Querying Data in sharded Clusters
+ 
+  - Scatter- Gather Queries Vs Targeted Queries
+ 
+ Step 9 : Performance Tips for sharded Clusters
