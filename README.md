@@ -1,10 +1,16 @@
 # sharding_workshop
 
 **Step : 1 Create 2 shard M30 Cluster on MongoDB Atlas **
- - Make sure mongo shell is installed on the loacal m/c
+ - Make sure mongo shell is installed on the local m/c
+ - Create User and whitelist your IP to connect to Atlas
  - try to connect to MongoDB cluster from local m/c
-      mongosh "mongodb+srv://shardtest.pyuze.mongodb.net/myFirstDatabase" --username <username>
+      mongosh "mongodb+srv://DNS" --username <username>
       Password : 
+ 
+ ******** While this is getting created Lets recap the concepts of sharding **************
+ - What is sharding
+ - MongoDB sharding Architecture
+ - When to Shard
  
 **Step 2 : Verify sharding status **
  
@@ -17,17 +23,17 @@
  - Discussion on observations
  - is cluster balanced ? How did we idenfy it ? what can be done incase not balanced ?
  
- Step 4 :  make cluster balanced using movePrimary command
+ Step 4 :  Make cluster balanced using movePrimary command
  
  - db.adminCommand( { movePrimary: <databaseName>, to: <newPrimaryShard> } )
   - db.adminCommand( { movePrimary : "test", to : "shard0001" } ) (example)
+ 
+ --> What actually happens when we run movePrimary a
  
  This is OK for current data balancing but how do we make sure this does not happen in future 
  
  - sh.enableSharding( <database>, <primary shard> )
    - sh.enableSharding( test, shard0001 ) - While creating the database
- 
- Note : All unsharded collections will go to primary shard only
  
  Step 5 : Lets discuss types of sharding in MongoDB
   - Hashed Sharding
