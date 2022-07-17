@@ -1,6 +1,6 @@
 # sharding_workshop
 
-**Step : 1 Create 2 shard M30 Cluster on MongoDB Atlas **
+Step : 1 Create 2 shard M30 Cluster on MongoDB Atlas 
  - Make sure mongo shell is installed on the local m/c
  - Create User and whitelist your IP to connect to Atlas
  - try to connect to MongoDB cluster from local m/c
