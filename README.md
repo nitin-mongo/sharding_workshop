@@ -44,28 +44,8 @@
  
  Step 7 : Now we will showcase how MongoDB can distribute the data automatically by sharding collections
  
- ** Hash shardng **
- - Create sharded database 
- - shard collection with shard key(Hashed)
- - insert sample data
- - Verify Data Distribution 
- 
- Discuss Challenges with Hash Shard Key
- 
- ** Range SHarding **
-  - Create sharded database 
-  - shard collection with shard key(Hashed)
-  - insert sample data
-  - Verify Data Distribution 
- 
- Step 8 : Querying Data in sharded Clusters
- 
-  - Scatter- Gather Queries Vs Targeted Queries
-
- ========================
- 
- Commands : 
- 
+ =============================
+ Data Needed to be loaded for Sharding
  Download compass importable json file or mongorestore dump file
 
 Json : https://nitincolortoken.s3.ap-south-1.amazonaws.com/json.zip
@@ -73,38 +53,37 @@ Json : https://nitincolortoken.s3.ap-south-1.amazonaws.com/json.zip
 Bson : https://nitincolortoken.s3.ap-south-1.amazonaws.com/dump.zip
 
 ./mongorestore --uri mongodb+srv://user:passwd@shardtest.pyuze.mongodb.net /Users/nitin.mukheja/CT/dump/shard/products.bson
-
-
-Hashed Sharding : 
+ ===============================
+ 
+ 
+ ** Hash shardng **
 
 Verify : sh.status()
 db.adminCommand( { listDatabases : 1 } )
 db.products.getShardDistribution()
 
-
-Shard Database :
+ Shard Database :
 
 sh.enableSharding("shard")
 
-Shard Collection : Talk about choosing shard key
+Shard Collection : 
 Use shard
 db.products.createIndex({"sku": "hashed"})
 
 sh.shardCollection("shard.products", { "sku":"hashed" })
 
 
-Load Data After enabling sharding – Equal
-Load Data Before enabling sharding ( add more data) – Equal with bigger chunks
-Reduce chunk size and load data again – Lots of chunk
+- Load Data After enabling sharding – Equal
+- Load Data Before enabling sharding ( add more data) – Equal with bigger chunks
+- Reduce chunk size and load data again – Lots of chunk
 Use config
 db.settings.updateOne(
    { _id: "chunksize" },
    { $set: { _id: "chunksize", value: 2 } },
    { upsert: true }
 )
-
-
-Ranged Sharding :
+ 
+ ** Range Sharding **
 
 Load Data to the cluster : Products.json (  either through compass or via mongorestore)
 
@@ -119,10 +98,10 @@ sh.enableSharding("shard")
 Shard Collection : Talk about choosing shard key
 
 sh.shardCollection("shard.products", { "sku":1 })
-
-
-
-Jumbo Chunk
+ 
+Step 8 :
+ 
+ Jumbo Chunk
 
 sh.enableSharding(“shard”)
 sh.shardCollection("shard.example", {"last_name" : 1, "first_name": 1 } )
@@ -136,14 +115,10 @@ db.example.getShardDistribution()
 
 sh.splitAt("m312.example", { last_name : "E", first_name : "Minkey" }) – Now distribution is equal
 
+ 
+ Step 9 : Querying Data in sharded Clusters
+ 
+  - Scatter- Gather Queries Vs Targeted Queries
 
-Queries : 
-
-
-Scatter- Gather
-
-db.products.find({"type" : "movie"}).explain()
-
-Targeted : 
-
-db.products.find({"sku" : 28792188}).explain()
+                    db.products.find({"type" : "movie"}).explain()
+                    db.products.find({"sku" : 28792188}).explain() 
