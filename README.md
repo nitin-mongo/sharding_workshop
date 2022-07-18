@@ -45,6 +45,7 @@
  Step 7 : Now we will showcase how MongoDB can distribute the data automatically by sharding collections
  
  =============================
+ 
  Data Needed to be loaded for Sharding
  
  Download compass importable json file or mongorestore dump file
@@ -53,7 +54,7 @@ Json : https://nitincolortoken.s3.ap-south-1.amazonaws.com/json.zip
 
 Bson : https://nitincolortoken.s3.ap-south-1.amazonaws.com/dump.zip
 
-./mongorestore --uri mongodb+srv://user:passwd@shardtest.pyuze.mongodb.net /Users/nitin.mukheja/CT/dump/shard/products.bson
+./mongorestore --uri mongodb+srv://user:passwd@shardtest.pyuze.mongodb.net /path/dump/shard/products.bson
  ===============================
  
  
