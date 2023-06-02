@@ -63,9 +63,9 @@
  
  Download compass importable json file or mongorestore dump file
 
-Json : https://nitincolortoken.s3.ap-south-1.amazonaws.com/json.zip
+Json : https://nitinbuckets.s3.ap-south-1.amazonaws.com/json.zip
 
-Bson : https://nitincolortoken.s3.ap-south-1.amazonaws.com/dump.zip
+Bson : https://nitinbuckets.s3.ap-south-1.amazonaws.com/dump.zip
 
 ./mongorestore --uri mongodb+srv://user:passwd@shardtest.pyuze.mongodb.net /path/dump/shard/products.bson
  
